@@ -7,8 +7,8 @@
 #pragma config(Sensor, dgtl4,  Limit,          sensorTouch)
 #pragma config(Sensor, dgtl5,  Button,         sensorTouch)
 #pragma config(Sensor, dgtl6,  LEDR,           sensorLEDtoVCC)
-#pragma config(Sensor, dgtl7,  LEDG,           sensorLEDtoVCC)
-#pragma config(Sensor, dgtl8,  LEDB,           sensorLEDtoVCC)
+#pragma config(Sensor, dgtl7,  LEDY,           sensorLEDtoVCC)
+#pragma config(Sensor, dgtl8,  LEDG,           sensorLEDtoVCC)
 #pragma config(Sensor, dgtl9,  EncodRa,        sensorQuadEncoder)
 #pragma config(Sensor, dgtl11, EncodLa,        sensorQuadEncoder)
 #pragma config(Motor,  port1,           Flashy,        tmotorVexFlashlight, openLoop, reversed)
@@ -28,16 +28,22 @@
             Wait for the button to be pushed and then turn the red LED on for 1 sec and then turn the LED off
 
   Pseudocode:
-            Wait for button push then 
+            Wait for button push then
             Set the red LED to 1
             Wait 1 sec
             Set the LED to 0
 */
 
 task main()
-{                                     //Program begins, insert code within curly braces
+{
+while (true)
+ {
+    untilTouch(Button);
+	  turnLEDOn(LEDR);
+	  wait(1);
+	  turnLEDOff(LEDR);
 
-
-
+ }
+                                      //Program begins, insert code within curly braces
 
 }
