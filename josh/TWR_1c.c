@@ -25,21 +25,20 @@
 
 
   Task Description:
-            Have the rover wait for the button to be pushed then turn on the green LED, drive forward in a straight line for 3 seconds, stop, turn around 180�, drive back to the start, stop and turn on the red LED for 1 second.
+            Have the rover wait for the button to be pushed then turn on the green LED, drive forward in a straight line for 3 seconds, stop, turn around 180*, drive back to the start, stop and turn on the red LED for 1 second.
 
   Pseudocode:
             Wait for button push then
             Set the green LED to 1
             Set drive motors to drive forward
             Wait 3 sec
-            Set the green LED to 0
-            Set drive motors to 0
             Set drive motor left to driveSpeedL
             Set drive motor right to -1 * driveSpeedR
             Wait x seconds
             Set drive motors to drive forward
             Wait 3 sec
             Stop the drive motors
+            Set the green LED to 0
             Turn red LED on
             Wait 1 sec
             Turn red LED off
@@ -47,20 +46,30 @@
 
 task main()
 {                                     //Program begins, insert code within curly braces
-	int driveMax = 30;
-	int motorOffset = 0;
-	int driveSpeedL = (driveMax + motorOffset);
-	int driveSpeedR = (driveMax - motorOffset);
+	int driveMax = 100;
+	int outdistance = 3;
+	// int motorOffset = 0;
+	int driveSpeedL = (driveMax);
+	int driveSpeedR = (driveMax);
   while (true)
   {
     untilTouch(Button);
+    turnLEDOn(LEDY);
+    wait(1.5);
 	  turnLEDOn(LEDG);
-	  startMotor(TankRight, driveSpeedL);
-    startMotor(TankLeft, driveSpeedR);
-	  wait(3);
-	  turnLEDOff(LEDG);
+	  startMotor(TankRight, driveSpeedR);
+    startMotor(TankLeft, driveSpeedL);
+	  wait(outdistance);
+	  startMotor(TankRight, driveSpeedR);
+    startMotor(TankLeft, -driveSpeedL);
+	  wait(0.97);
+	  startMotor(TankRight, driveSpeedR);
+    startMotor(TankLeft, driveSpeedL);
+	  wait(outdistance-0.5);
 	  stopMotor(TankRight);
     stopMotor(TankLeft);
+    turnLEDOff(LEDG);
+    turnLEDOff(LEDY);
     turnLEDOn(LEDR);
 	  wait(1);
 	  turnLEDOff(LEDR);
