@@ -46,15 +46,11 @@
 
 task main()
 {                                     //Program begins, insert code within curly braces
-
 	int driveMax = 100;
-	float turnTime = 0.93; //For 180*
-	//float turnTime90 = (0.52);
 	int outdistance = 3;
 	// int motorOffset = 0;
-	int driveSpeedL = (driveMax+6);
-	int driveSpeedR = (driveMax-18);
-	//int driveSpeedTurn = driveMax;
+	int driveSpeedL = (driveMax);
+	int driveSpeedR = (driveMax);
   while (true)
   {
     untilTouch(Button);
@@ -67,7 +63,7 @@ task main()
 
 	  startMotor(TankRight, driveSpeedR);
     startMotor(TankLeft, -driveSpeedL);
-	  wait(turnTime);
+	  wait(0.97);
 
 	  startMotor(TankRight, driveSpeedR);
     startMotor(TankLeft, driveSpeedL);
