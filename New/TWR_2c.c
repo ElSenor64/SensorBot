@@ -21,26 +21,46 @@
   Project Title: TWR_2a
   Team Members: Josh L && Zak S
   Date: 3/6/20
-  Summary: Loops
+  Summary: If Else
 
 
-  Task Description: Use a while loop to program the rover to make the yellow LED blink. Turn on the yellow LED for one second
-and then off for half a second, repeat infinitely.
+  Task Description: Use an If Else statement to write a program so that the green Led will turn on and stay on when the button is
+pushed. Then if the potentiometer is less than 2500 the yellow LED will be on and if the potentiometer is
+greater than or equal to 2500 the red LED will be on. This program should run infinitely.
+
 
 
   Pseudocode:
-		While true:
-			Turn yellow LED on.
-			Wait 1 second.
-			Trun yellow LED off.
-			Wait 0.5 seconds.
+		Do forever:
+			If the button is pushed:
+				Turn the green LED on
+			Otherwise:
+				Turn the green LED off
+
+			If the Pot is less than 2500:
+				Turn the yellow LED on
+				Turn the red LED off
+			Otherwise:
+				Turn the yellow LED off
+				Turn the red LED on
 */
 task main()
 {                                     //Program begins, insert code within curly braces
 	while(true){
-	  turnLEDOn(LEDY);
-	  wait(1);
-	  turnLEDOff(LEDY);
-	  wait(0.5);
-  }
+	if(SensorValue[Button]==1)
+	{
+		turnLEDOn(LEDG);
+	} else {
+		turnLEDOff(LEDG);
+	}
+
+	if(SensorValue[Pot]<2500)
+	{
+		turnLEDOn(LEDY);
+		turnLEDOff(LEDR);
+	} else {
+		turnLEDOn(LEDR);
+		turnLEDOff(LEDY);
+	}
+	}
 }

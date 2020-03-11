@@ -21,26 +21,46 @@
   Project Title: TWR_2a
   Team Members: Josh L && Zak S
   Date: 3/6/20
-  Summary: Loops
+  Summary: Variables
 
 
-  Task Description: Use a while loop to program the rover to make the yellow LED blink. Turn on the yellow LED for one second
-and then off for half a second, repeat infinitely.
+  Task Description: Use variables to program the rover to make the yellow LED blink 10 times. Turn on the green LED for one
+second and then off for half a second, repeat 10 times.
+
 
 
   Pseudocode:
-		While true:
+		While blinks is less than 10:
 			Turn yellow LED on.
 			Wait 1 second.
 			Trun yellow LED off.
 			Wait 0.5 seconds.
+			Increase blinks by one.
+
+		Set blinks to 0.
+	  While blinks is less than 10:
+			Turn green LED on.
+			Wait 1 second.
+			Trun green LED off.
+			Wait 0.5 seconds.
+			Increase blinks by one.
 */
 task main()
 {                                     //Program begins, insert code within curly braces
-	while(true){
+	int blinks = 0;
+	while(blinks<10){
 	  turnLEDOn(LEDY);
 	  wait(1);
 	  turnLEDOff(LEDY);
 	  wait(0.5);
+	  blinks++;
+  }
+  blinks = 0;
+  while(blinks<10){
+	  turnLEDOn(LEDG);
+	  wait(1);
+	  turnLEDOff(LEDG);
+	  wait(0.5);
+	  blinks++;
   }
 }
