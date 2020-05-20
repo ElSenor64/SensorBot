@@ -1,0 +1,5 @@
+DOCS: http://help.robotc.net/WebHelpVEX/index.htm
+
+Diameter: 2.753"
+Circumference: 8.6488"
+Encoder ticks per full rotation: 
